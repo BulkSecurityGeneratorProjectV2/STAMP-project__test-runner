@@ -701,7 +701,7 @@ public class EntryPoint {
         final File jacocoAgentJar;
         try {
             final InputStream is = EntryPoint.class.getClassLoader().getResourceAsStream("jacocoagent.jar");
-            jacocoAgentJar = File.createTempFile("test-runner", "jacoco-agent");
+            jacocoAgentJar = Files.createTempFile("test-runner", "jacoco-agent").toFile();
             jacocoAgentJar.deleteOnExit();
             final OutputStream os = new FileOutputStream(jacocoAgentJar);
             IOUtils.copy(is, os);
